@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beauty RS — Institut de Beauté | Bordj El Bahri, Alger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#FAF8F4;
+  --ink:#111010;
+  --sand:#EDE5D8;
+  --acc:#B8745A;
+  --acc2:#7FA884;
+  --muted:#8A8480;
+  --line:rgba(0,0,0,.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:"Outfit",sans-serif;background:var(--cream);color:var(--ink);font-weight:300;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:2rem 5rem;transition:all .4s}
+nav.dark{background:rgba(250,248,244,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:1.1rem 5rem}
+.logo{font-family:"Cormorant",serif;font-size:1.55rem;font-weight:300;letter-spacing:.06em;color:#fff;text-decoration:none;transition:color .3s}
+nav.dark .logo{color:var(--ink)}
+.logo em{font-style:italic;color:rgba(255,255,255,.55);transition:color .3s}
+nav.dark .logo em{color:var(--acc)}
+.nav-links{display:flex;gap:2.8rem;list-style:none}
+.nav-links a{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55);text-decoration:none;font-weight:300;transition:color .25s}
+nav.dark .nav-links a{color:var(--muted)}
+.nav-links a:hover{color:#fff}
+nav.dark .nav-links a:hover{color:var(--ink)}
+.nav-rdv{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.9);text-decoration:none;font-weight:400;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:1px;transition:all .25s}
+nav.dark .nav-rdv{color:var(--acc);border-color:var(--acc)}
+
+/* HERO */
+#hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:flex-end}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(10,8,6,.55) 0%,rgba(10,8,6,.1) 50%,transparent 100%),linear-gradient(to top,rgba(10,8,6,.72) 0%,transparent 55%)}
+.hero-content{position:relative;z-index:2;padding:0 5rem 5.5rem;width:100%;display:flex;justify-content:space-between;align-items:flex-end}
+.hero-left h1{font-family:"Cormorant",serif;font-size:clamp(4.5rem,8vw,8.5rem);font-weight:300;color:#fff;line-height:.9;letter-spacing:-.02em}
+.hero-left h1 em{font-style:italic;color:rgba(255,255,255,.55)}
+.hero-right{text-align:right}
+.hero-eyebrow{font-size:.63rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:1rem;display:block}
+.hero-tagline{font-size:.95rem;color:rgba(255,255,255,.55);font-weight:300;line-height:1.7;max-width:260px;margin-left:auto;margin-bottom:2rem}
+.hero-cta{display:inline-flex;align-items:center;gap:.8rem;color:#fff;text-decoration:none;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;font-weight:300;transition:gap .35s}
+.hero-cta:hover{gap:1.3rem}
+.cta-line{width:40px;height:1px;background:#fff;transition:width .35s}
+.hero-cta:hover .cta-line{width:68px}
+.hero-scroll{position:absolute;bottom:3.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.scroll-bar{width:1px;height:52px;background:linear-gradient(to bottom,rgba(255,255,255,.5),transparent);animation:sp 2.2s ease-in-out infinite}
+@keyframes sp{0%,100%{opacity:.25;transform:scaleY(.8)}50%{opacity:1;transform:scaleY(1.15)}}
+.scroll-txt{font-size:.56rem;letter-spacing:.3em;color:rgba(255,255,255,.25);text-transform:uppercase}
+
+/* INTRO */
+#intro{padding:9rem 5rem 7rem;display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:end}
+.intro-quote{font-family:"Cormorant",serif;font-size:clamp(2.5rem,4.2vw,4rem);font-weight:300;line-height:1.08;letter-spacing:-.01em}
+.intro-quote em{font-style:italic;color:var(--acc)}
+.intro-body p{font-size:.93rem;line-height:1.95;color:var(--muted);margin-bottom:2rem}
+.intro-stats{display:flex;gap:3rem;padding-top:2rem;border-top:1px solid var(--line)}
+.stat-n{font-family:"Cormorant",serif;font-size:3rem;font-weight:300;line-height:1;color:var(--ink)}
+.stat-n em{font-style:normal;color:var(--acc)}
+.stat-l{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
+
+/* SECTION LABEL */
+.sec-label{font-size:.6rem;letter-spacing:.38em;text-transform:uppercase;color:var(--acc);display:flex;align-items:center;gap:1rem;margin-bottom:3.5rem}
+.sec-label::after{content:"";width:44px;height:1px;background:var(--acc);opacity:.4}
+
+/* SOINS CORPS */
+#corps{padding:2rem 5rem 8rem}
+.corps-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:500px 440px;gap:3px;background:var(--sand)}
+.cg{overflow:hidden;position:relative;background:#1a1410}
+.cg img{width:100%;height:100%;object-fit:cover;transition:transform .85s cubic-bezier(.25,.46,.45,.94);filter:brightness(.88)}
+.cg:hover img{transform:scale(1.07);filter:brightness(1)}
+.cg-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,6,4,.85) 0%,rgba(8,6,4,.18) 52%,transparent 100%);transition:background .4s}
+.cg:hover .cg-overlay{background:linear-gradient(to top,rgba(8,6,4,.92) 0%,rgba(8,6,4,.28) 58%,transparent 100%)}
+.cg-body{position:absolute;bottom:0;left:0;right:0;padding:2rem 2.2rem}
+.cg-tech{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.55rem}
+.cg-name{font-family:"Cormorant",serif;font-size:1.65rem;font-weight:300;color:#fff;line-height:1.08;margin-bottom:.5rem}
+.cg-desc{font-size:.77rem;color:rgba(255,255,255,.42);line-height:1.8;margin-bottom:.9rem;max-height:0;overflow:hidden;transition:max-height .55s ease,opacity .5s ease;opacity:0}
+.cg:hover .cg-desc{max-height:90px;opacity:1}
+.cg-price{font-family:"Cormorant",serif;font-size:1.15rem;color:rgba(255,255,255,.72)}
+.cg-price small{font-family:"Outfit",sans-serif;font-size:.6rem;color:rgba(255,255,255,.28);margin-right:.3rem}
+.cg-badge{position:absolute;top:1.5rem;right:1.5rem;background:rgba(184,116,90,.82);backdrop-filter:blur(6px);padding:.3rem .75rem;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#fff;border-radius:2px}
+.cg1{grid-column:1/5;grid-row:1}
+.cg2{grid-column:5/9;grid-row:1}
+.cg3{grid-column:9/13;grid-row:1}
+.cg4{grid-column:1/7;grid-row:2}
+.cg5{grid-column:7/13;grid-row:2}
+
+/* SEPARATEUR */
+.sep-band{background:var(--ink);padding:5rem;display:flex;align-items:center;gap:4rem}
+.sep-line{flex:1;height:1px;background:rgba(255,255,255,.07)}
+.sep-txt{font-family:"Cormorant",serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;font-style:italic;color:rgba(255,255,255,.25);white-space:nowrap;letter-spacing:.04em}
+
+/* SOINS VISAGE */
+#visage{padding:2rem 5rem 8rem}
+.visage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;background:var(--sand)}
+.vg{overflow:hidden;position:relative;height:600px;background:#1a1410}
+.vg img{width:100%;height:100%;object-fit:cover;transition:transform .85s cubic-bezier(.25,.46,.45,.94);filter:brightness(.85)}
+.vg:hover img{transform:scale(1.07);filter:brightness(1)}
+.vg-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,6,4,.9) 0%,rgba(8,6,4,.22) 55%,transparent 100%);transition:background .4s}
+.vg:hover .vg-overlay{background:linear-gradient(to top,rgba(8,6,4,.95) 0%,rgba(8,6,4,.32) 60%,transparent 100%)}
+.vg-body{position:absolute;bottom:0;left:0;right:0;padding:2.5rem}
+.vg-num{font-family:"Cormorant",serif;font-size:.82rem;color:rgba(255,255,255,.18);letter-spacing:.28em;margin-bottom:.7rem}
+.vg-name{font-family:"Cormorant",serif;font-size:2rem;font-weight:300;color:#fff;line-height:1.05;margin-bottom:.55rem}
+.vg-desc{font-size:.78rem;color:rgba(255,255,255,.42);line-height:1.82;margin-bottom:1.1rem;max-height:0;overflow:hidden;transition:max-height .55s ease,opacity .5s ease;opacity:0}
+.vg:hover .vg-desc{max-height:95px;opacity:1}
+.vg-price{font-family:"Cormorant",serif;font-size:1.2rem;color:rgba(255,255,255,.68)}
+.vg-price small{font-family:"Outfit",sans-serif;font-size:.6rem;color:rgba(255,255,255,.28);margin-right:.3rem}
+.vg-tag{position:absolute;top:1.8rem;left:1.8rem;padding:.3rem .75rem;background:rgba(127,168,132,.78);backdrop-filter:blur(4px);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#fff;border-radius:2px}
+
+/* TARIFS */
+#tarifs{background:var(--ink);padding:8rem 5rem}
+.tarifs-inner{max-width:940px;margin:0 auto}
+.tarifs-title{font-family:"Cormorant",serif;font-size:clamp(3.5rem,6vw,6rem);font-weight:300;color:#fff;line-height:.9;letter-spacing:-.02em;margin-bottom:1.2rem}
+.tarifs-title em{font-style:italic;color:rgba(184,116,90,.75)}
+.tarifs-sub{font-size:.78rem;color:rgba(255,255,255,.18);letter-spacing:.05em;line-height:1.8;margin-bottom:5rem}
+.t-block{margin-bottom:4rem}
+.t-block-head{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.8rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.t-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0}
+.t-icon.c{background:rgba(184,116,90,.18);color:var(--acc)}
+.t-icon.v{background:rgba(127,168,132,.18);color:var(--acc2)}
+.t-head-name{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.22)}
+.t-row{display:flex;align-items:baseline;padding:.95rem .8rem;border-bottom:1px solid rgba(255,255,255,.05);transition:background .22s,padding-left .22s;border-radius:2px;cursor:default;margin:0 -.8rem}
+.t-row:hover{background:rgba(255,255,255,.03);padding-left:1.4rem}
+.t-name{flex:1;font-size:.88rem;color:rgba(255,255,255,.68);font-weight:300}
+.t-price{text-align:right;min-width:160px}
+.t-amount{font-family:"Cormorant",serif;font-size:1.38rem;color:#fff;display:block}
+.t-note{font-size:.6rem;color:rgba(255,255,255,.18);display:block;text-align:right}
+.t-footer{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06);font-size:.73rem;color:rgba(255,255,255,.16);line-height:1.9}
+
+/* RDV */
+#rdv{padding:8rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:start}
+.rdv-title{font-family:"Cormorant",serif;font-size:clamp(2.8rem,4.5vw,4.2rem);font-weight:300;line-height:1;letter-spacing:-.02em;margin-bottom:2.5rem}
+.rdv-title em{font-style:italic;color:var(--acc)}
+.rdv-perks{display:flex;flex-direction:column;gap:.65rem;margin-bottom:3rem}
+.perk-item{display:flex;align-items:center;gap:.9rem;font-size:.82rem;color:var(--muted);font-weight:300}
+.perk-dot{width:4px;height:4px;border-radius:50%;background:var(--acc);flex-shrink:0}
+.rdv-contact-hint{padding:1.8rem;border:1px solid var(--line);font-size:.82rem;color:var(--muted);line-height:1.8}
+.rdv-contact-hint strong{color:var(--ink);font-weight:400}
+.rdv-contact-hint a{color:var(--acc);text-decoration:none}
+.form-wrap{display:flex;flex-direction:column;gap:1px;background:var(--line)}
+.f-row2{display:grid;grid-template-columns:1fr 1fr;gap:1px}
+.f-field{background:var(--cream);padding:1.2rem 1.5rem;transition:background .2s}
+.f-field:focus-within{background:#fff}
+.f-field label{display:block;font-size:.57rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.42rem}
+.f-field input,.f-field select,.f-field textarea{width:100%;border:none;background:transparent;color:var(--ink);font-size:.87rem;font-family:"Outfit",sans-serif;font-weight:300;outline:none;-webkit-appearance:none}
+.f-field input::placeholder,.f-field textarea::placeholder{color:rgba(0,0,0,.18)}
+.f-field textarea{resize:none;height:76px}
+.f-field select option{background:#fff}
+.f-submit{background:var(--ink);color:#fff;border:none;padding:1.4rem 2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-family:"Outfit",sans-serif;cursor:pointer;transition:background .3s;display:flex;align-items:center;justify-content:center;gap:1rem;font-weight:300;width:100%}
+.f-submit:hover{background:var(--acc)}
+.f-or{display:flex;align-items:center;gap:1rem;font-size:.63rem;letter-spacing:.1em;color:var(--muted);margin:.8rem 0}
+.f-or::before,.f-or::after{content:"";flex:1;height:1px;background:var(--line)}
+.f-cal{display:flex;align-items:center;justify-content:center;gap:.7rem;background:var(--cream);border:1px solid var(--line);padding:1.1rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);text-decoration:none;transition:all .3s;font-weight:300}
+.f-cal:hover{border-color:var(--acc);color:var(--acc)}
+
+/* CONTACT */
+#contact{background:var(--sand);padding:7rem 5rem;display:grid;grid-template-columns:1fr 1.2fr;gap:6rem;align-items:start}
+.contact-title{font-family:"Cormorant",serif;font-size:clamp(2.4rem,3.8vw,3.6rem);font-weight:300;line-height:1.05;letter-spacing:-.02em;margin-bottom:3rem}
+.contact-title em{font-style:italic;color:var(--acc)}
+.contact-list{display:flex;flex-direction:column}
+.c-item{padding:1.15rem 0;border-bottom:1px solid rgba(0,0,0,.08);transition:padding-left .2s;cursor:default}
+.c-item:hover{padding-left:.4rem}
+.c-lbl{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:.3rem}
+.c-val{font-size:.9rem;color:var(--ink);line-height:1.7}
+.c-val a{color:var(--ink);text-decoration:none;transition:color .25s}
+.c-val a:hover{color:var(--acc)}
+.h-grid{margin-top:2.5rem;display:flex;flex-direction:column}
+.h-row{display:flex;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid rgba(0,0,0,.06);font-size:.83rem}
+.h-day{color:var(--muted)}
+.h-time{color:var(--ink);font-weight:400}
+.map-wrap{border-radius:2px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.1);margin-bottom:2rem}
+.map-wrap iframe{display:block;width:100%;height:320px;border:0}
+.soc-row{display:flex;gap:1rem;margin-bottom:2.8rem;flex-wrap:wrap}
+.soc-a{font-size:.67rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:1px;transition:all .25s;font-weight:300}
+.soc-a:hover{color:var(--acc);border-color:var(--acc)}
+.gift-box{background:var(--cream);padding:2rem;border-top:2px solid var(--acc)}
+.gift-title{font-family:"Cormorant",serif;font-size:1.2rem;font-weight:300;color:var(--ink);margin-bottom:.55rem}
+.gift-text{font-size:.78rem;color:var(--muted);line-height:1.85;margin-bottom:1.2rem}
+.btn-ink{background:var(--ink);color:#fff;padding:.85rem 2rem;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;font-weight:300;display:inline-flex;align-items:center;gap:.7rem;transition:background .3s;border:none;cursor:pointer;font-family:"Outfit",sans-serif}
+.btn-ink:hover{background:var(--acc)}
+
+/* FOOTER */
+footer{background:var(--ink);padding:2.2rem 5rem;display:flex;justify-content:space-between;align-items:center}
+.f-logo{font-family:"Cormorant",serif;font-size:1.2rem;font-weight:300;color:rgba(255,255,255,.38);letter-spacing:.06em}
+.f-logo em{font-style:italic;color:rgba(184,116,90,.55)}
+.f-copy{font-size:.6rem;letter-spacing:.1em;color:rgba(255,255,255,.16)}
+.f-nav{display:flex;gap:2rem}
+.f-nav a{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.18);text-decoration:none;transition:color .25s}
+.f-nav a:hover{color:rgba(184,116,90,.65)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.25,.46,.45,.94),transform .9s cubic-bezier(.25,.46,.45,.94)}
+.rvl{opacity:0;transform:translateX(-22px);transition:opacity .9s ease,transform .9s ease}
+.rvr{opacity:0;transform:translateX(22px);transition:opacity .9s ease,transform .9s ease}
+.rv.on,.rvl.on,.rvr.on{opacity:1;transform:none}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav,nav.dark{padding:1.3rem 1.5rem}
+  .nav-links{display:none}
+  .hero-content{flex-direction:column;gap:2.5rem;padding:0 1.5rem 4rem}
+  .hero-right{text-align:left}
+  .hero-tagline{margin-left:0;max-width:100%}
+  #intro{grid-template-columns:1fr;padding:5rem 1.5rem;gap:3rem}
+  #corps,#visage{padding:1.5rem 1.5rem 5rem}
+  .corps-grid{grid-template-columns:1fr;grid-template-rows:auto}
+  .cg1,.cg2,.cg3,.cg4,.cg5{grid-column:1/-1;grid-row:auto;height:360px}
+  .visage-grid{grid-template-columns:1fr}
+  .vg{height:400px}
+  #tarifs{padding:5rem 1.5rem}
+  .tarifs-title{font-size:3rem}
+  #rdv,#contact{grid-template-columns:1fr;padding:5rem 1.5rem;gap:3.5rem}
+  .sep-band{padding:3rem 1.5rem}
+  footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem 1.5rem}
+  .f-nav{justify-content:center;flex-wrap:wrap}
+  .intro-stats{flex-wrap:wrap;gap:2rem}
+  .f-row2{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#hero" class="logo">Beauty<em>.</em>RS</a>
+  <ul class="nav-links">
+    <li><a href="#corps">Corps</a></li>
+    <li><a href="#visage">Visage</a></li>
+    <li><a href="#tarifs">Tarifs</a></li>
+    <li><a href="#rdv">Rendez-vous</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#rdv" class="nav-rdv">Réserver →</a>
+</nav>
+
+<section id="hero">
+  <img class="hero-img" src="images/hero.png" alt="Beauty RS Institut">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <h1>Beauty<br><em>RS</em></h1>
+    </div>
+    <div class="hero-right">
+      <span class="hero-eyebrow">Bordj El Bahri — Alger</span>
+      <p class="hero-tagline">Soins du visage & du corps.<br>Techniques professionnelles.<br>Résultats visibles.</p>
+      <a href="#corps" class="hero-cta"><span class="cta-line"></span>Découvrir les soins</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-bar"></div>
+    <span class="scroll-txt">Scroll</span>
+  </div>
+</section>
+
+<section id="intro">
+  <div class="rvl">
+    <h2 class="intro-quote">L'art de révéler<br>votre <em>beauté</em></h2>
+  </div>
+  <div class="rvr intro-body">
+    <p>Chaque soin est pensé pour vous offrir une transformation visible et un moment de plénitude. Des techniques professionnelles sélectionnées pour leur efficacité, dans un cadre dédié à votre bien-être.</p>
+    <div class="intro-stats">
+      <div><div class="stat-n">8<em>+</em></div><div class="stat-l">Soins</div></div>
+      <div><div class="stat-n">5<em>★</em></div><div class="stat-l">Satisfaction</div></div>
+      <div><div class="stat-n">DZD</div><div class="stat-l">Alger</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="corps">
+  <div class="sec-label rv">Soins du Corps</div>
+  <div class="corps-grid">
+
+    <div class="cg cg1">
+      <img src="images/corps-pressotherapie.png" alt="Pressothérapie">
+      <div class="cg-overlay"></div>
+      <div class="cg-badge">Pressothérapie</div>
+      <div class="cg-body">
+        <div class="cg-tech">Drainage & Circulation</div>
+        <div class="cg-name">Soin Jambes<br>Légères</div>
+        <div class="cg-desc">Technique de drainage par compression séquentielle. Soulage la lourdeur, stimule la circulation et réduit la rétention d'eau.</div>
+        <div class="cg-price"><small>à partir de</small>3 000 DZD</div>
+      </div>
+    </div>
+
+    <div class="cg cg2">
+      <img src="images/corps-amincissant.png" alt="Massage Amincissant">
+      <div class="cg-overlay"></div>
+      <div class="cg-badge">Cellule Bleue</div>
+      <div class="cg-body">
+        <div class="cg-tech">Minceur & Silhouette</div>
+        <div class="cg-name">Massage<br>Amincissant</div>
+        <div class="cg-desc">Technique Cellule Bleue — ciblée anti-cellulite, brûle les graisses localisées et affine la silhouette dès les premières séances.</div>
+        <div class="cg-price"><small>à partir de</small>3 500 DZD</div>
+      </div>
+    </div>
+
+    <div class="cg cg3">
+      <img src="images/corps-reliftant.png" alt="Massage Reliftant">
+      <div class="cg-overlay"></div>
+      <div class="cg-body">
+        <div class="cg-tech">Fermeté & Tonicité</div>
+        <div class="cg-name">Massage Reliftant<br>Raffermissant</div>
+        <div class="cg-desc">Protocole anti-relâchement combinant techniques manuelles et actifs raffermissants. Peau tonifiée, silhouette sculptée.</div>
+        <div class="cg-price"><small>à partir de</small>3 500 DZD</div>
+      </div>
+    </div>
+
+    <div class="cg cg4">
+      <img src="images/corps-cryo.png" alt="Cryothérapie">
+      <div class="cg-overlay"></div>
+      <div class="cg-badge">Innovation</div>
+      <div class="cg-body">
+        <div class="cg-tech">Froid Thérapeutique</div>
+        <div class="cg-name">Cryothérapie</div>
+        <div class="cg-desc">Application du froid thérapeutique pour tonifier la peau, réduire les graisses localisées et améliorer la circulation sanguine. Technique innovante aux effets durables.</div>
+        <div class="cg-price"><small>à partir de</small>5 000 DZD</div>
+      </div>
+    </div>
+
+    <div class="cg cg5">
+      <img src="images/corps-colombien.png" alt="Lifting Colombien">
+      <div class="cg-overlay"></div>
+      <div class="cg-badge">Signature</div>
+      <div class="cg-body">
+        <div class="cg-tech">Sculpture Corporelle</div>
+        <div class="cg-name">Lifting Colombien</div>
+        <div class="cg-desc">Technique colombienne de massage profond pour sculpter la silhouette, tonifier les muscles et lifter les tissus. Notre soin phare, résultats spectaculaires et durables.</div>
+        <div class="cg-price"><small>à partir de</small>5 000 DZD</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="sep-band">
+  <div class="sep-line"></div>
+  <div class="sep-txt">Soins du Visage</div>
+  <div class="sep-line"></div>
+</div>
+
+<section id="visage">
+  <div class="sec-label rv">Soins du Visage</div>
+  <div class="visage-grid">
+
+    <div class="vg">
+      <img src="images/visage-hydrafacial.png" alt="Hydrafacial">
+      <div class="vg-overlay"></div>
+      <div class="vg-tag">Hydratation</div>
+      <div class="vg-body">
+        <div class="vg-num">01</div>
+        <div class="vg-name">Hydrafacial</div>
+        <div class="vg-desc">Traitement multi-étapes : nettoyage profond, exfoliation, extraction des impuretés et infusion d'actifs hydratants. Teint lumineux, pores affinés, résultat immédiat.</div>
+        <div class="vg-price"><small>à partir de</small>4 000 DZD</div>
+      </div>
+    </div>
+
+    <div class="vg">
+      <img src="images/visage-sculptant.png" alt="Massage Facial Sculptant">
+      <div class="vg-overlay"></div>
+      <div class="vg-tag">Sculpture</div>
+      <div class="vg-body">
+        <div class="vg-num">02</div>
+        <div class="vg-name">Massage Facial<br>Sculptant</div>
+        <div class="vg-desc">Techniques manuelles précises pour sculpter les contours du visage, drainer les toxines et redonner une apparence affinée. Lifting naturel sans aiguille.</div>
+        <div class="vg-price"><small>à partir de</small>4 000 DZD</div>
+      </div>
+    </div>
+
+    <div class="vg">
+      <img src="images/visage-doublemottant.png" alt="Relifter Double Mottant">
+      <div class="vg-overlay"></div>
+      <div class="vg-tag">Anti-âge</div>
+      <div class="vg-body">
+        <div class="vg-num">03</div>
+        <div class="vg-name">Relifter Double<br>Mottant</div>
+        <div class="vg-desc">Double action : lifting cutané et raffermissement en profondeur. Réduit visiblement les rides, redéfinit l'ovale du visage et restaure la fermeté des tissus.</div>
+        <div class="vg-price"><small>à partir de</small>5 000 DZD</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="tarifs">
+  <div class="tarifs-inner">
+    <div class="rv">
+      <div class="tarifs-title">Nos<br><em>tarifs</em></div>
+      <p class="tarifs-sub">En Dinar Algérien (DZD) · Tarifs indiqués à partir de, variables selon durée et intensité · Forfaits multi-séances disponibles</p>
+    </div>
+
+    <div class="t-block rv">
+      <div class="t-block-head">
+        <div class="t-icon c">◈</div>
+        <span class="t-head-name">Soins Corps</span>
+      </div>
+      <div class="t-row"><div class="t-name">Soin Jambes Légères<div style="font-size:.65rem;color:var(--acc);font-style:italic;margin-top:.15rem">Pressothérapie</div></div><div class="t-price"><span class="t-amount">3 000 DZD</span><span class="t-note">à partir de / séance</span></div></div>
+      <div class="t-row"><div class="t-name">Massage Amincissant<div style="font-size:.65rem;color:var(--acc);font-style:italic;margin-top:.15rem">Technique Cellule Bleue</div></div><div class="t-price"><span class="t-amount">3 500 DZD</span><span class="t-note">à partir de / séance</span></div></div>
+      <div class="t-row"><div class="t-name">Massage Reliftant Raffermissant<div style="font-size:.65rem;color:var(--acc);font-style:italic;margin-top:.15rem">Fermeté &amp; tonicité</div></div><div class="t-price"><span class="t-amount">3 500 DZD</span><span class="t-note">à partir de / séance</span></div></div>
+      <div class="t-row"><div class="t-name">Lifting Colombien<div style="font-size:.65rem;color:var(--acc);font-style:italic;margin-top:.15rem">Sculpture corporelle</div></div><div class="t-price"><span class="t-amount">5 000 DZD</span><span class="t-note">à partir de / séance</span></div></div>
+      <div class="t-row"><div class="t-name">Cryothérapie<div style="font-size:.65rem;color:var(--acc);font-style:italic;margin-top:.15rem">Froid thérapeutique</div></div><div class="t-price"><span class="t-amount">5 000 DZD</span><span class="t-note">à partir de / séance</span></div></div>
+    </div>
+
+    <div class="t-block rv">
+      <div class="t-block-head">
+        <div class="t-icon v">◇</div>
+        <span class="t-head-name">Soins Visage</span>
+      </div>
+      <div class="t-row"><div class="t-name">Hydrafacial<div style="font-size:.65rem;color:var(--acc2);font-style:italic;margin-top:.15rem">Hydratation profonde</div></div><div class="t-price"><span class="t-amount">4 000 DZD</span><span class="t-note">à partir de / séance</span></div></div>
+      <div class="t-row"><div class="t-name">Massage Facial Sculptant<div style="font-size:.65rem;color:var(--acc2);font-style:italic;margin-top:.15rem">Lifting naturel</div></div><div class="t-price"><span class="t-amount">4 000 DZD</span><span class="t-note">à partir de / séance</span></div></div>
+      <div class="t-row"><div class="t-name">Relifter Double Mottant<div style="font-size:.65rem;color:var(--acc2);font-style:italic;margin-top:.15rem">Anti-âge &amp; raffermissement</div></div><div class="t-price"><span class="t-amount">5 000 DZD</span><span class="t-note">à partir de / séance</span></div></div>
+    </div>
+
+    <p class="t-footer rv">Forfaits multi-séances sur demande · Cartes cadeaux disponibles · Bilan gratuit sur rendez-vous</p>
+  </div>
+</section>
+
+<section id="rdv">
+  <div class="rvl">
+    <h2 class="rdv-title">Prenez<br><em>rendez-vous</em></h2>
+    <div class="rdv-perks">
+      <div class="perk-item"><span class="perk-dot"></span>Confirmation rapide par message</div>
+      <div class="perk-item"><span class="perk-dot"></span>Rappel la veille du rendez-vous</div>
+      <div class="perk-item"><span class="perk-dot"></span>Annulation sans frais</div>
+      <div class="perk-item"><span class="perk-dot"></span>Paiement sur place en institut</div>
+      <div class="perk-item"><span class="perk-dot"></span>Bilan personnalisé gratuit</div>
+    </div>
+    <div class="rdv-contact-hint">
+      Vous pouvez aussi nous contacter directement par<br>
+      <strong>WhatsApp</strong> : <a href="https://wa.me/213600000000">+213 6 00 00 00 00</a><br>
+      <strong>Téléphone</strong> : <a href="tel:+213600000000">+213 6 00 00 00 00</a>
+    </div>
+  </div>
+  <div class="rvr">
+    <div class="form-wrap">
+      <div class="f-row2">
+        <div class="f-field"><label>Prénom &amp; Nom</label><input type="text" placeholder="Votre nom complet"></div>
+        <div class="f-field"><label>Téléphone</label><input type="tel" placeholder="+213 6 00 00 00 00"></div>
+      </div>
+      <div class="f-field">
+        <label>Soin souhaité</label>
+        <select>
+          <option value="">Choisir un soin…</option>
+          <optgroup label="— Soins Corps —">
+            <option>Soin Jambes Légères (Pressothérapie) — à partir 3 000 DZD</option>
+            <option>Massage Amincissant (Cellule Bleue) — à partir 3 500 DZD</option>
+            <option>Massage Reliftant Raffermissant — à partir 3 500 DZD</option>
+            <option>Lifting Colombien — à partir 5 000 DZD</option>
+            <option>Cryothérapie — à partir 5 000 DZD</option>
+          </optgroup>
+          <optgroup label="— Soins Visage —">
+            <option>Hydrafacial — à partir 4 000 DZD</option>
+            <option>Massage Facial Sculptant — à partir 4 000 DZD</option>
+            <option>Relifter Double Mottant — à partir 5 000 DZD</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="f-row2">
+        <div class="f-field"><label>Date souhaitée</label><input type="date"></div>
+        <div class="f-field"><label>Heure préférée</label>
+          <select>
+            <option value="">—</option>
+            <option>Matin (9h – 12h)</option>
+            <option>Après-midi (12h – 17h)</option>
+            <option>Soir (17h – 19h)</option>
+          </select>
+        </div>
+      </div>
+      <div class="f-field"><label>Message (optionnel)</label><textarea placeholder="Précisions, questions, allergies…"></textarea></div>
+      <button class="f-submit" onclick="submitForm(this)">Envoyer ma demande &nbsp;→</button>
+    </div>
+    <div class="f-or">ou réservez en ligne</div>
+    <a href="https://calendly.com/votre-lien" target="_blank" class="f-cal">📅 &nbsp; Réserver sur Calendly</a>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="rvl">
+    <h2 class="contact-title">Nous<br><em>trouver</em></h2>
+    <div class="contact-list">
+      <div class="c-item"><div class="c-lbl">Adresse</div><div class="c-val">Bordj El Bahri, Alger — Algérie</div></div>
+      <div class="c-item"><div class="c-lbl">Téléphone &amp; WhatsApp</div><div class="c-val"><a href="tel:+213600000000">+213 6 00 00 00 00</a></div></div>
+      <div class="c-item"><div class="c-lbl">Email</div><div class="c-val"><a href="mailto:contact@beauty-rs.dz">contact@beauty-rs.dz</a></div></div>
+    </div>
+    <div class="h-grid">
+      <div class="h-row"><span class="h-day">Samedi – Jeudi</span><span class="h-time">9h00 – 19h00</span></div>
+      <div class="h-row"><span class="h-day">Vendredi</span><span class="h-time">14h00 – 19h00</span></div>
+    </div>
+  </div>
+  <div class="rvr">
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12773.946!2d3.2167!3d36.7667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fba9b37a9f795%3A0x2c93e52d04bdae70!2sBordj%20El%20Bahri%2C%20Alger%2C%20Alg%C3%A9rie!5e0!3m2!1sfr!2sfr!4v1710000000000!5m2!1sfr!2sfr"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Beauty RS — Bordj El Bahri, Alger">
+      </iframe>
+    </div>
+    <div class="soc-row">
+      <a href="#" class="soc-a">Instagram</a>
+      <a href="#" class="soc-a">Facebook</a>
+      <a href="https://wa.me/213600000000" target="_blank" class="soc-a">WhatsApp</a>
+    </div>
+    <div class="gift-box">
+      <div class="gift-title">🎁 Carte Cadeau</div>
+      <p class="gift-text">Offrez un soin beauty premium à vos proches. Cartes cadeaux disponibles pour tous les montants, utilisables sur l'ensemble de nos soins.</p>
+      <a href="#rdv" class="btn-ink">Demander →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">Beauty<em>.</em>RS</div>
+  <p class="f-copy">© 2025 Beauty RS — Bordj El Bahri, Alger</p>
+  <nav class="f-nav">
+    <a href="#corps">Corps</a>
+    <a href="#visage">Visage</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="#rdv">Réserver</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("on")}),{threshold:.07});
+document.querySelectorAll(".rv,.rvl,.rvr").forEach(el=>obs.observe(el));
+document.querySelectorAll(".cg,.vg").forEach((el,i)=>{el.style.transitionDelay=(i*.08)+"s";el.classList.add("rv");obs.observe(el);});
+const nav=document.getElementById("nav");
+window.addEventListener("scroll",()=>nav.classList.toggle("dark",scrollY>80));
+function submitForm(btn){btn.textContent="✓ Demande envoyée avec succès !";btn.style.background="#5a8a5a";setTimeout(()=>{btn.textContent="Envoyer ma demande  →";btn.style.background="";},3500);}
+</script>
+</body>
+</html>
